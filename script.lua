@@ -61,9 +61,10 @@ esp:addToggle("Player ESP", nil, function(value)
             hl.OutlineTransparency = 0
         end
     else
-        for i,v in pairs(game.Players:GetChildren()) do
-            v.Character:FindFirstChildWhichIsA("Highlight"):Destroy()
-            v.Character:FindFirstChildWhichIsA("BillboardGui"):Destroy()
+        for i,v in pairs(game:GetService("Workspace").Living:GetDescendants()) do
+            if v:IsA("Highlight") then
+                v:Destroy()
+            end
         end
     end
 end)
